@@ -8,27 +8,27 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Date;
-import com.srsj.bo.SysUserRequest;
+import com.srsj.bo.SysPermissionRequest;
 import com.srsj.common.bo.PageResponse;
-import com.srsj.model.SysUser;
-import com.srsj.service.SysUserService;
+import com.srsj.model.SysPermission;
+import com.srsj.service.SysPermissionService;
 
  /**
-  * desc : SysUser
+  * desc : SysPermission
   * Created by weichen on  2017/04/02.
   */
 
 @Controller
-@RequestMapping("/api/sysUser")
-public class SysUserController extends BaseController {
+@RequestMapping("/api/sysPermission")
+public class SysPermissionController extends BaseController {
 
 	@Autowired
-	SysUserService sysUserService;
+	SysPermissionService sysPermissionService;
 
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	@ResponseBody
-	private String insert (SysUser record) {
-		int r = sysUserService.insert(record);
+	private String insert (SysPermission record) {
+		int r = sysPermissionService.insert(record);
 		String str = callbackSuccess (r);
 		return str;
 	}
@@ -36,23 +36,23 @@ public class SysUserController extends BaseController {
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	@ResponseBody
 	private String delete (Long id) {
-		int r = sysUserService.delete(id);
+		int r = sysPermissionService.delete(id);
 		String str = callbackSuccess (r);
 		return str;
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	@ResponseBody
-	private String update (SysUser record) {
-		int r = sysUserService.update(record);
+	private String update (SysPermission record) {
+		int r = sysPermissionService.update(record);
 		String str = callbackSuccess (r);
 		return str;
 	}
 
 	@RequestMapping(value = "/list")
 	@ResponseBody
-	private String list (SysUserRequest clientRequest) {
-		PageResponse<SysUser> r = sysUserService.queryForPage(clientRequest);
+	private String list (SysPermissionRequest clientRequest) {
+		PageResponse<SysPermission> r = sysPermissionService.queryForPage(clientRequest);
 		String str = callbackSuccess (r);
 		return str;
 	}

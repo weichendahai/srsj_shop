@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.srsj.dao.SysUserRoleDao">
+
+	<resultMap id="BaseResultMap" type="com.srsj.model.SysUserRole">
+		<id property="id" column="id" jdbcType="BIGINT"/>
+		<result property="uid" column="uid" jdbcType="BIGINT"/>
+		<result property="rid" column="rid" jdbcType="BIGINT"/>
+	</resultMap>
+
+	    <!-- 查询条件 -->
+    <sql id="Base_Where_Clause">
+    	where 1=1
+    	<trim  suffixOverrides="," >
+			<if test="id != null and id != ''">
+			and id = #{id, jdbcType=BIGINT }
+		  </if>
+			<if test="uid != null and uid != ''">
+			and uid = #{uid, jdbcType=BIGINT }
+		  </if>
+			<if test="rid != null and rid != ''">
+			and rid = #{rid, jdbcType=BIGINT }
+		  </if>
+		</trim>
+    </sql>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id"
+		parameterType="com.srsj.model.SysUserRole">
+		insert into sys_user_role
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="uid != null">
+				uid,
+			</if>
+			<if test="rid != null">
+				rid,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id, jdbcType=BIGINT},
+			</if>
+			<if test="uid != null">
+				#{uid, jdbcType=BIGINT},
+			</if>
+			<if test="rid != null">
+				#{rid, jdbcType=BIGINT},
+			</if>
+		</trim>
+	</insert>
+
+	<delete id="delete" parameterType="int">
+		delete from sys_user_role
+		where
+		id = #{id}
+	</delete>
+
+	<update id="update" parameterType="com.srsj.model.SysUserRole">
+		update sys_user_role
+		<set>
+			<if test="uid != null">
+			  uid = #{uid, jdbcType=BIGINT },
+			</if>
+			<if test="rid != null">
+			  rid = #{rid, jdbcType=BIGINT },
+			</if>
+		</set>
+		where
+		id = #{id}
+	</update>
+
+	<!-- 用于select查询公用抽取的列 -->
+	<sql id="Base_Column_List">
+		id,uid,rid
+	</sql>
+
+	<select id="queryById" parameterType="int" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from sys_user_role
+		where
+		id = #{id}
+	</select>
+
+    <select id="queryOne" resultMap="BaseResultMap"  parameterType="Object">
+        select <include refid="Base_Column_List"/>
+        from sys_user_role
+        <include refid="Base_Where_Clause"/>
+        limit 1
+    </select>
+
+	<select id="queryByCount" resultType="int">
+		select count(*)
+		from sys_user_role
+		<include refid="Base_Where_Clause"/>
+	</select>
+
+    <select id="queryByList" resultMap="BaseResultMap"  parameterType="Object">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_user_role
+        <include refid="Base_Where_Clause"/>
+
+        <if test="sortCondition != null">
+            ${sortCondition}
+        </if>
+        ${limitCondition}
+    </select>
+
+	<select id="queryAll" resultMap="BaseResultMap">
+		select
+			<include refid="Base_Column_List" />
+		from sys_user_role
+        <include refid="Base_Where_Clause"/>
+	</select>
+
+</mapper>

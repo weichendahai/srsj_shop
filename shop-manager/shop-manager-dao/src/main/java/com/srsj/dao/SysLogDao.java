@@ -9,10 +9,10 @@ package com.srsj.dao;
 
 import org.springframework.stereotype.Repository;
 
-import com.srsj.model.SysUser;
+import com.srsj.model.SysLog;
 import com.srsj.common.dao.BaseDao;
 
 @Repository
-public interface SysUserDao extends BaseDao<SysUser> {
+public interface SysLogDao extends BaseDao<SysLog> {
 
 }

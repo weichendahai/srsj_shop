@@ -12,28 +12,27 @@ import java.util.List;
  */
 public interface BaseDao<T> {
 
-    int add(T t);
+    int insert(T t);
 
-//    int batchAdd(List<T> tList);
+    int batchInsert(List<T> tList);
 
     int update(T t);
 
     int delete(Object id);
 
-//    int batchDelete(List<Object> idList);
-//
-//    int queryByCount(PageRequest page);
-//
-//    T queryOne(PageRequest page);
-//
-//    List<T> queryByList(PageRequest page);
-//
-//    T queryById(Object id);
-//
-//    T queryByIdForUpdate(Object id);
+    int batchDelete(List<Object> idList);
 
-//    List<T> queryAll(Object object);
+    int queryByCount(PageRequest page);
 
+    T queryOne(PageRequest page);
 
-    List<T> queryAll();
+    List<T> queryByList(PageRequest page);
+
+    T queryById(Object id);
+
+    T queryByIdForUpdate(Object id);
+
+    List<T> queryAll(Object object);
+
+//    List<T> queryAll();
 }

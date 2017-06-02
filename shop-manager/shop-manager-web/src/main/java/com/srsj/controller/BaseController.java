@@ -49,24 +49,6 @@ public class BaseController {
         return HttpUtil.isGet(this.request);
     }
 
-//    protected <T> Page<T> getPage() {
-//        return this.getPage(10);
-//    }
-//
-//    protected <T> Page<T> getPage(int size) {
-//        int _size = size;
-//        int _index = 1;
-//        if(this.request.getParameter("_size") != null) {
-//            _size = Integer.parseInt(this.request.getParameter("_size"));
-//        }
-//
-//        if(this.request.getParameter("_index") != null) {
-//            _index = Integer.parseInt(this.request.getParameter("_index"));
-//        }
-//
-//        return new Page(_index, _size);
-//    }
-
     protected String redirectTo(String url) {
         StringBuffer rto = new StringBuffer("redirect:");
         rto.append(url);

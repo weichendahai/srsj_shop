@@ -18,7 +18,7 @@
         </dependency>
     </dependencies>
     <modules>
-        <module>shop-manager-pojo</module>
+        <module>shop-manager-model</module>
         <module>shop-manager-dao</module>
         <module>shop-manager-service</module>
         <module>shop-manager-web</module>
